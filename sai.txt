@@ -1,0 +1,28 @@
+--need features
+
+#inventory
+
+#products show list with amount
+
+#debt
+
+--Table
+
+#Category Table
+    id
+    name
+    slug
+
+#Product Table
+    id
+    name
+    slug
+    category_id
+    price
+    quantity
+
+#Debt Table
+    id
+    product_id
+    price
+
