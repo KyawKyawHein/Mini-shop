@@ -11,11 +11,17 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import SearchIcon from '@mui/icons-material/Search';
+import { useRouter } from "next/navigation";
+import { LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import dayjs from "dayjs";
 export default function Home() {
   const theme = useTheme();
+  const {push} = useRouter()
   return (
-    <Box className="my-3 w-full overflow-x-hidden">
-      <Box className="flex justify-between items-end px-3 py-1 mb-5">
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <Box className="my-8 w-full overflow-x-hidden">
+      <Box className="flex justify-between items-start lg:items-center  px-3 py-1 mb-5">
         <Typography className="text-xl lg:text-4xl font-bold text-blue-500">
           ယနေ့ရောင်းရငွေ
         </Typography>
@@ -32,11 +38,12 @@ export default function Home() {
           />
         </Box>
         <Box className="lg:flex gap-3 items-center">
-          <Typography className="text-xl lg:text-3xl font-bold text-blue-500">
-            Total : 0 MMK
+          <Typography className="text-xl text-end lg:text-3xl font-bold text-blue-500">
+            0 MMK
           </Typography>
           <Button
-            variant="contained"
+            onClick={()=>push('/add-today-sale')}
+            variant="outlined"
             size={
               useMediaQuery(theme.breakpoints.down("sm")) ? "small" : "medium"
             }
@@ -46,7 +53,9 @@ export default function Home() {
           </Button>
         </Box>
       </Box>
+      <MobileDatePicker slotProps={{ textField: {size:'small'} }} className="my-1" defaultValue={dayjs(new Date())} />
       <ProductTable />
     </Box>
+    </LocalizationProvider>
   );
 }

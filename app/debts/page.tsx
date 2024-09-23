@@ -7,13 +7,15 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
-} from "@mui/material";
+} from "@mui/material";   
 import AddIcon from "@mui/icons-material/Add";
 import Debt from "./components/Debt";
 import SearchIcon from '@mui/icons-material/Search';
+import { useGetDebts } from "@/queries/debt.api";
 
 const Debts = () => {
     const theme = useTheme()
+  const {data:debts,isLoading } = useGetDebts()
   return (
     <Box className="my-3 w-full overflow-x-hidden">
     <Box className="flex justify-between items-end px-3 py-1 mb-5">
@@ -44,11 +46,11 @@ const Debts = () => {
     </Box>
     {/* debt list  */}
     <Box className="grid grid-cols-3 md:grid-cols-5 gap-2 w-full">
-        <Debt/>
-        <Debt/>
-        <Debt/>
-        <Debt/>
-        <Debt/>
+      {
+        debts?.map(debt=>(
+          <Debt key={debt.id} {...debt}/>
+        ))
+      }
     </Box>
   </Box>
   )

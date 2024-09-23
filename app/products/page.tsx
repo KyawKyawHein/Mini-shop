@@ -8,9 +8,11 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ProductsTable from "./components/ProductsTable";
+import { useRouter } from "next/navigation";
 
 const ProductsPage = () => {
   const theme = useTheme();
+  const {push} = useRouter();
   return (
     <Box className="my-3 w-full overflow-x-hidden">
       <Box className="flex justify-between items-center px-3 py-1 mb-5">
@@ -18,6 +20,7 @@ const ProductsPage = () => {
           All Products
         </Typography>
         <Button
+          onClick={()=>push('/products/add')}
           variant="contained"
           size={
             useMediaQuery(theme.breakpoints.down("sm")) ? "small" : "medium"

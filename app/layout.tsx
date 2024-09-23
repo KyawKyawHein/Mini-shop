@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
+import ReactQueryClientProvider from "./components/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,12 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <section className="flex gap-3">
-          <Sidebar />
-          {children}
-        </section>
-      </body>
+      <ReactQueryClientProvider>
+        <body className={inter.className}>
+          <section className="flex gap-3 min-h-screen">
+            <Sidebar />
+            {children}
+          </section>
+        </body>
+      </ReactQueryClientProvider>
     </html>
   );
 }

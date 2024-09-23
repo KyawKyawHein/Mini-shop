@@ -56,12 +56,9 @@ const ProductTable = () => {
       <Table className="w-full" aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Id</TableCell>
-            <TableCell align="right">နာမည်</TableCell>
-            <TableCell align="right">ပုံ</TableCell>
-            <TableCell align="right">အရေအတွက်</TableCell>
-            <TableCell align="right">စျေးနှုန်း</TableCell>
-            <TableCell align="right">ရက်စွဲ</TableCell>
+            <TableCell align="left">နာမည်</TableCell>
+            <TableCell align="center">အရေအတွက်</TableCell>
+            <TableCell align="center">စျေးနှုန်း</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -70,14 +67,9 @@ const ProductTable = () => {
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {row.id}
-              </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.quantity}</TableCell>
-              <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.date}</TableCell>
+              <TableCell align="left">{row.name}</TableCell>
+              <TableCell align="center">{row.quantity}</TableCell>
+              <TableCell align="center">{row.price}</TableCell>
             </TableRow>
           ))}
         </TableBody>
