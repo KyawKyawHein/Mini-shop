@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Box className="my-8 w-full overflow-x-hidden">
-      <Box className="flex justify-between items-start lg:items-center  px-3 py-1 mb-5">
+      <Box className="flex justify-between items-center px-3 py-1 mb-5">
         <Typography className="text-xl lg:text-4xl font-bold text-blue-500">
           ယနေ့ရောင်းရငွေ
         </Typography>

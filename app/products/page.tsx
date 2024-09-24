@@ -1,36 +1,41 @@
 "use client";
 import {
   Box,
-  Button,
+  Breadcrumbs,
+  Fab,
+  Link,
   Typography,
-  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-import ProductsTable from "./components/ProductsTable";
 import { useRouter } from "next/navigation";
+import ProductsBox from "./components/ProductsBox";
+import products from "@/lib/json/products";
+import { backToHome } from "@/lib/utils";
 
 const ProductsPage = () => {
-  const theme = useTheme();
   const {push} = useRouter();
   return (
-    <Box className="my-3 w-full overflow-x-hidden">
-      <Box className="flex justify-between items-center px-3 py-1 mb-5">
-        <Typography className="text-xl lg:text-4xl font-bold text-blue-500">
-          All Products
-        </Typography>
-        <Button
-          onClick={()=>push('/products/add')}
-          variant="contained"
-          size={
-            useMediaQuery(theme.breakpoints.down("sm")) ? "small" : "medium"
-          }
-          className="flex items-center gap-2"
-        >
-          <AddIcon /> Add New
-        </Button>
+    <Box className="my-8 w-full overflow-x-hidden h-full">
+      <Breadcrumbs aria-label="breadcrumb" className="mb-3">
+        <Link underline="hover" color="inherit" onClick={backToHome}>
+          Home
+        </Link>
+        <Typography sx={{ color: "text.primary" }}>Add Product</Typography>
+      </Breadcrumbs>
+      <Box className="grid grid-cols-2 gap-2">
+        {products.map((product) => (
+          <ProductsBox key={product.id} {...product} />
+        ))}
       </Box>
-      <ProductsTable/>
+      <Fab
+        color="primary"
+        aria-label="add"
+        className="absolute bottom-2 right-7 z-40"
+        onClick={()=>push('/products/add')}
+      >
+        <AddIcon />
+      </Fab>
     </Box>
   );
 };

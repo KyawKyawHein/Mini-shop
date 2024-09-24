@@ -26,3 +26,9 @@
     product_id
     price
 
+input
+
+name
+category_id
+count
+price

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "./components/Sidebar";
 import ReactQueryClientProvider from "./components/ReactQueryClientProvider";
+import { Box } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <ReactQueryClientProvider>
         <body className={inter.className}>
-          <section className="flex gap-3 min-h-screen">
+          <section className="relative p-1 min-h-screen">
             <Sidebar />
+            <Box className="p-1">
             {children}
+            </Box>
           </section>
         </body>
       </ReactQueryClientProvider>
