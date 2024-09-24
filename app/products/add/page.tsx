@@ -58,22 +58,12 @@ const ProductAddPage = () => {
           label="Quantity"
           type="number"
           className="my-3 w-full"
-          slotProps={{
-            inputLabel: {
-              shrink: true,
-            },
-          }}
         />
         <TextField
           id="outlined-number"
           label="Price"
           type="number"
           className="my-3 w-full"
-          slotProps={{
-            inputLabel: {
-              shrink: true,
-            },
-          }}
         />
         <Button onClick={()=>{
           if(imgRef.current) imgRef.current.click()
