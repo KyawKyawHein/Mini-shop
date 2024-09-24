@@ -13,7 +13,7 @@ interface IDebtItemStore extends IDebtItem {
     setDebtItem: (debtItem: DebtSingleItem[]) => void;
 }
 
-const useDebtItemStore = create<IDebtItemStore>(zukeeper((set) => ({
+const useDebtItemStore = create<IDebtItemStore>(zukeeper((set:any) => ({
     // dialogState: false,
     debtItem: [],
     setDebtItem: (debtItem: DebtSingleItem[]) => set({ debtItem }),
