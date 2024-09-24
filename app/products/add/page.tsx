@@ -16,7 +16,7 @@ import { backToHome, backToProduct } from "@/lib/utils";
 
 const ProductAddPage = () => {
   const imgRef = useRef<HTMLInputElement | null>(null);  
-  const handleImage = (e)=>{
+  const handleImage = (e:any)=>{
     const files = e.target.files[0];
     try {
       
